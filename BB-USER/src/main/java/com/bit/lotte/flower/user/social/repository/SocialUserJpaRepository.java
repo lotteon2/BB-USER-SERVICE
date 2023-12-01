@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SocialUserJpaRepository extends JpaRepository<SocialUser,Long> {
-  public Optional<SocialUser> findByOauthId(Long oauthId);
+   Optional<SocialUser> findByOauthId(Long oauthId);
   List<SocialUser> findAllByOauthId(Long oauthId);
-  public Optional<SocialUser> findByOauthIdAndAndDeleted(Long oauthId, Boolean isDeleted);
 }
