@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserLoginResponse {
+public class UserDataResponse {
   private String nickName;
   private boolean isPhoneNumberIsRegistered;
 }

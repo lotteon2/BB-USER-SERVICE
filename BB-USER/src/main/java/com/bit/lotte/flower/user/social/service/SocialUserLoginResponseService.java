@@ -10,20 +10,21 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class SocialUserDataResponseService {
+public class SocialUserLoginResponseService {
+
 
   private final SocialUserJpaRepository repository;
 
-  public UserDataResponse getUserData(Long oauthId) {
+  public UserDataResponse getUserLoginResponse(Long oauthId) {
     SocialUser socialUser = repository.findByOauthId(oauthId).orElseThrow(() -> {
-      throw new SocialUserDomainException("존재하지 않은 소셜 유저 계정입니다.");
+      throw new SocialUserDomainException("해당 유저를 찾을 수 없습니다.");
     });
 
-    return SocialUserMapper.getLoginResponse(socialUser.getNickname(), isUserPhoneRegistered(
-        socialUser.getPhoneNumber()));
+    return SocialUserMapper.createUserLoginCommandBySocialUser(socialUser.getNickname(),
+        isPhoneNumberRegistered(socialUser.getPhoneNumber()));
   }
 
-  private boolean isUserPhoneRegistered(String phoneNumber) {
-    return phoneNumber != null;
+  private Boolean isPhoneNumberRegistered(String phoneNumber) {
+    return phoneNumber !=null;
   }
 }
