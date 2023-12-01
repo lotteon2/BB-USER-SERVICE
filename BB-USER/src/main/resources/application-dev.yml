@@ -1,0 +1,17 @@
+server:
+  port: ${server.port}
+spring:
+  config:
+    activate:
+      on-profile: dev
+  redis:
+    host: ${spring.redis.host}
+    port: ${spring.redis.port}
+  datasource:
+    url: ${spring.datasoure.url}
+    username: ${spring.datasource.username}
+    password: ${spring.datasoure.password}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
