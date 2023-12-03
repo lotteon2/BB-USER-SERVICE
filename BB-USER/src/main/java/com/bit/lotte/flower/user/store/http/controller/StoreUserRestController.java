@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
-public class StoreRestController {
+public class StoreUserRestController {
 
   private final StoreManagerLoginResponseService storeManagerLoginResponseService;
   private final StoreManagerSignUpService storeManagerCreateService;
