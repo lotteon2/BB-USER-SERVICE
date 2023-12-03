@@ -1,5 +1,6 @@
 package com.bit.lotte.flower.user.social.dto.command;
 
+import com.bit.lotte.flower.user.common.valueobject.AuthId;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class UserLoginCommand {
 
   @NotNull
-  private Long socialId;
+  private AuthId socialId;
   @NotNull
   private String nickname;
   @NotNull

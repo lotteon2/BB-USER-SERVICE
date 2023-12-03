@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDataResponse {
-  private String nickName;
+  private String nickname;
   private boolean isPhoneNumberIsRegistered;
+  private String profileImage;
 }

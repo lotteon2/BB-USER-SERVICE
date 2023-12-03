@@ -1,6 +1,8 @@
 server:
   port: ${server.port}
 spring:
+  application:
+    name: user-service
   config:
     activate:
       on-profile: dev
@@ -15,3 +17,11 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic

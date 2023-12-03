@@ -16,6 +16,6 @@ public class SocialUserIdentityManager {
   @Transactional
   public UserDataResponse get(UserLoginCommand userLoginCommand) {
     socialUserLoginManager.process(userLoginCommand);
-    return userDataResponse.getUserData(userLoginCommand.getSocialId());
+    return userDataResponse.getUserData(userLoginCommand.getSocialId().getValue());
   }
 }

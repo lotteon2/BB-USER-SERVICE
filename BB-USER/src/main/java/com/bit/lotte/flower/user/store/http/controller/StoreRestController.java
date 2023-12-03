@@ -7,6 +7,7 @@ import com.bit.lotte.flower.user.store.mapper.StoreManagerCommandMapper;
 import com.bit.lotte.flower.user.store.service.StoreManagerLoginResponseService;
 import com.bit.lotte.flower.user.store.service.StoreManagerSignUpService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,12 +33,12 @@ public class StoreRestController {
   }
 
 
-  @GetMapping("/users/store-manager/{storeMangerId}")
-  public CommonResponse<StoreManagerLoginResponse> login(
+  @GetMapping("/users/store-managers/{storeMangerId}")
+  public ResponseEntity<StoreManagerLoginResponse> login(
       @PathVariable Long storeMangerId) {
-    return CommonResponse.<StoreManagerLoginResponse>builder()
-        .data(storeManagerLoginResponseService.getStoreManagerResponse(storeMangerId)).build();
+    return ResponseEntity.ok(storeManagerLoginResponseService.getStoreManagerResponse(storeMangerId));
   }
+
 
 
 }

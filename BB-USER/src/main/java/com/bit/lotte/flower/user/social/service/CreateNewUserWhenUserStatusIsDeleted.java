@@ -17,12 +17,8 @@ public class CreateNewUserWhenUserStatusIsDeleted implements
 
   @Override
   public void processUser(UserLoginCommand command) {
-    boolean thereIsUserNotDeleted = repository.findAllByOauthId(command.getSocialId())
-        .stream()
-        .noneMatch(SocialUser::getIsDeleted);
-    if (!thereIsUserNotDeleted) {
+    if (repository.findByOauthIdAndIsDeletedFalse(command.getSocialId().getValue()).isEmpty()) {
       repository.save(SocialUserMapper.createSocialUserByLoginCommand(command));
     }
   }
-
 }

@@ -15,9 +15,10 @@ public class SocialUserDataResponseService {
   private final SocialUserJpaRepository repository;
 
   public UserDataResponse getUserData(Long oauthId) {
-    SocialUser socialUser = repository.findByOauthId(oauthId).orElseThrow(() -> {
-      throw new SocialUserDomainException("존재하지 않은 소셜 유저 계정입니다.");
-    });
+    SocialUser socialUser = repository.findByOauthIdAndIsDeletedFalse(oauthId)
+        .orElseThrow(() -> {
+          throw new SocialUserDomainException("존재하지 않은 소셜 유저 계정입니다.");
+        });
 
     return SocialUserMapper.getLoginResponse(socialUser.getNickname(), isUserPhoneRegistered(
         socialUser.getPhoneNumber()));

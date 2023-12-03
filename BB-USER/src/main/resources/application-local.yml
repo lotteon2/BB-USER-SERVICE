@@ -1,14 +1,8 @@
 server:
   port: 8082
 spring:
-  cloud:
-    openfeign:
-      client:
-        config:
-          default:
-            connectTimeout: 5000
-            readTimeout: 5000
-            loggerLevel: basic
+  application:
+    name: user-service
   config:
     activate:
       on-profile: local
@@ -21,3 +15,14 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+feign:
+  client:
+    default:
+      url: http://localhost:8082
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+

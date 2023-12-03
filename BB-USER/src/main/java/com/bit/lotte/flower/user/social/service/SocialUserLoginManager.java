@@ -21,14 +21,14 @@ public class SocialUserLoginManager {
   private final SocialUserLoginResponseService socialUserLoginResponseService;
 
   public UserDataResponse process(UserLoginCommand userLoginCommand){
-    Long oauthId = userLoginCommand.getSocialId();
-    if(repository.findByOauthId(oauthId).isPresent()){
+    Long oauthId = userLoginCommand.getSocialId().getValue();
+    if(!repository.findAllByOauthId(oauthId).isEmpty()){
     socialUserLoginWhenUserExist.processUser(userLoginCommand);
     }
     else{
       socialUserCreateService.create(userLoginCommand);
     }
-    return socialUserLoginResponseService.getUserLoginResponse(oauthId);
+    return socialUserLoginResponseService.getUserLoginResponseWithNotSoftDeleted(oauthId);
   }
 
 }
