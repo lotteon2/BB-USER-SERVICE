@@ -19,8 +19,6 @@ aBB-USER/src/main/java/com/bit/lotte/flower/user/social/service/SocialUserDataRe
 cBB-USER/src/main/java/com/bit/lotte/flower/user/store/http/controller/StoreManagerDataResponse.java,6/2/622cbd5246bda5f054c1c88d5e34bcb03bf8d9db
 t
 DBB-USER/src/main/java/com/bit/lotte/flower/user/UserApplication.java,0/4/04836976c6df8776ff85017359b8cdce48053455
-ã
-[BB-USER/src/main/java/com/bit/lotte/flower/user/store/mapper/StoreManagerCommandMapper.java,c/8/c880aff27da14a1ed3a4b3942178ca32a248c9e3
 ê
 `BB-USER/src/main/java/com/bit/lotte/flower/user/store/dto/command/StoreManagerSignUpCommand.java,8/f/8f7833179776f291b368c88f8e162953e4d326c4
 ~
