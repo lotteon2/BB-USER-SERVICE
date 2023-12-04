@@ -19,7 +19,6 @@ public class SocialUserLoginResponseService {
     SocialUser socialUser = repository.findByOauthIdAndIsDeletedFalse(oauthId).orElseThrow(() -> {
       throw new SocialUserDomainException("해당 유저를 찾을 수 없습니다.");
     });
-
     return SocialUserMapper.createUserLoginCommandBySocialUser(socialUser.getProfileImage(),
         socialUser.getNickname(),
         isPhoneNumberRegistered(socialUser.getPhoneNumber()));

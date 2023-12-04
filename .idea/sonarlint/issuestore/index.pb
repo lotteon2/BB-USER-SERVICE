@@ -7,14 +7,8 @@ SBB-USER/src/main/java/com/bit/lotte/flower/user/common/DefaultProfileImagerURL.
 _BB-USER/src/main/java/com/bit/lotte/flower/user/store/repository/StoreManagerJpaRepository.java,4/4/44275798fd0dca0b827f75f228db4a0c7323e42e
 ~
 NBB-USER/src/main/java/com/bit/lotte/flower/user/store/entity/StoreManager.java,7/8/787c1d334a7be8421a0107c9f2b453da8df6f7f0
-ã
-[BB-USER/src/main/java/com/bit/lotte/flower/user/social/service/SocialUserCreateService.java,2/e/2ec8677621d0cce3c1748eac0bdbb5e2b1d5a453
-é
-^BB-USER/src/main/java/com/bit/lotte/flower/user/social/repository/SocialUserJpaRepository.java,3/e/3ed3afbde8b834b8f2a65d9e0206e99b2c08370c
 ë
 aBB-USER/src/main/java/com/bit/lotte/flower/user/social/service/SocialUserDataResponseService.java,0/f/0f19ae0f8cfd4f51fe36d94633fdb0725a94fae8
-ê
-`BB-USER/src/main/java/com/bit/lotte/flower/user/social/service/SocialUserLoginWhenUserExist.java,6/b/6b68692eb3137ec064fde8b111aa526986ba70e6
 ì
 cBB-USER/src/main/java/com/bit/lotte/flower/user/store/http/controller/StoreManagerDataResponse.java,6/2/622cbd5246bda5f054c1c88d5e34bcb03bf8d9db
 t
