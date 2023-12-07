@@ -4,7 +4,7 @@ package com.bit.lotte.flower.user.social.mapper;
 import com.bit.lotte.flower.user.common.DefaultProfileImagerURL;
 import com.bit.lotte.flower.user.common.valueobject.AuthId;
 import com.bit.lotte.flower.user.social.dto.command.UserLoginCommand;
-import com.bit.lotte.flower.user.social.dto.response.UserDataResponse;
+import com.bit.lotte.flower.user.social.dto.response.UserLoginDataResponse;
 import com.bit.lotte.flower.user.social.entity.SocialUser;
 
 public class SocialUserMapper {
@@ -15,9 +15,9 @@ public class SocialUserMapper {
 
   }
 
-  public static UserDataResponse getLoginResponse(String nickName,
+  public static UserLoginDataResponse getLoginResponse(String nickName,
       boolean isPhoneNumberRegistered) {
-    return UserDataResponse.builder()
+    return UserLoginDataResponse.builder()
         .nickname(nickName)
         .isPhoneNumberIsRegistered(isPhoneNumberRegistered).build();
 
@@ -31,8 +31,8 @@ public class SocialUserMapper {
             userCreateCommand.getSocialId().getValue()).build();
   }
 
-  public static UserDataResponse createUserLoginCommandBySocialUser(String profileImage,String nickname, Boolean socialUserPhoneIsRegistered){
-    return UserDataResponse.builder().isPhoneNumberIsRegistered(socialUserPhoneIsRegistered).nickname(
+  public static UserLoginDataResponse createUserLoginCommandBySocialUser(String profileImage,String nickname, Boolean socialUserPhoneIsRegistered){
+    return UserLoginDataResponse.builder().isPhoneNumberIsRegistered(socialUserPhoneIsRegistered).nickname(
         nickname).profileImage(profileImage).build();
   }
 

@@ -5,12 +5,16 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDataResponse {
+@Getter
+public class UserMyPageDataResponse {
+
   private String nickname;
-  private boolean isPhoneNumberIsRegistered;
-  private String profileImage;
+  private String phoneNumber;
+  private String email;
+  private String likesCnt;
+  private String counponCnt;
+
 }

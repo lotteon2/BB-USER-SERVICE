@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.bit.lotte.flower.user.common.valueobject.AuthId;
 import com.bit.lotte.flower.user.social.dto.command.UserLoginCommand;
-import com.bit.lotte.flower.user.social.dto.response.UserDataResponse;
+import com.bit.lotte.flower.user.social.dto.response.UserLoginDataResponse;
 import com.bit.lotte.flower.user.social.entity.SocialUser;
 import com.bit.lotte.flower.user.social.repository.SocialUserJpaRepository;
 import java.util.ArrayList;
@@ -58,7 +58,7 @@ class SocialUserLoginIntegrationTest {
   @Test
   void SocialUserLogin_WhenUserIsNotRegistered_CreateUserAndGetUserDataResponse() {
     Long userId = getCommand(testOauthId).getSocialId().getValue();
-    UserDataResponse response = loginManager.process(getCommand(userId));
+    UserLoginDataResponse response = loginManager.process(getCommand(userId));
     assertTrue(repository.findById(userId).isPresent());
     assertNotNull(response);
 
@@ -73,7 +73,7 @@ class SocialUserLoginIntegrationTest {
     Long userId = getCommand(testOauthId).getSocialId().getValue();
     repository.save(saveSocialUserById(testOauthId));
 
-    UserDataResponse response = loginManager.process(getCommand(userId));
+    UserLoginDataResponse response = loginManager.process(getCommand(userId));
 
     List<SocialUser> notDeletedUsers = repository.findAllByOauthId(testOauthId)
         .stream()
@@ -89,7 +89,7 @@ class SocialUserLoginIntegrationTest {
   void SocialUserLogin_WhenUserIsRegisteredAndThereIsNotDeletedUser_NotCreateUserSameSizeAndGetResponse() {
     repository.saveAll(setTwoUserOneUserIsNotDeletedStatus(testOauthId));
     int sizeBeforeInput = repository.findAllByOauthId(testOauthId).size();
-    UserDataResponse response = loginManager.process(getCommand(testOauthId));
+    UserLoginDataResponse response = loginManager.process(getCommand(testOauthId));
     int sizeAfterLoginProcess = repository.findAllByOauthId(testOauthId).size();
 
     assertEquals(sizeBeforeInput, sizeAfterLoginProcess);
