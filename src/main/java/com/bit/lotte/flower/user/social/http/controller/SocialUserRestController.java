@@ -31,27 +31,27 @@ public class SocialUserRestController {
   private final SocialUserLoginManager socialUserLoginManager;
   private final SocialUpdateUserService socialUserService;
 
-  @PostMapping("/users/social")
+  @PostMapping("/social")
   public ResponseEntity<UserLoginDataResponse> userLogin(
       @RequestBody UserLoginCommand userLoginCommand) {
     UserLoginDataResponse response = socialUserLoginManager.process(userLoginCommand);
     return ResponseEntity.ok(response);
   }
 
-  @PutMapping("/api/users/phone-number")
+  @PutMapping("/social/phone-number")
   public CommonResponse<String> userPhoneNumberUpdate(
       @RequestBody UserPhoneNumberDto phoneNumberDto, @RequestHeader Long userId) {
     socialUserService.updatePhoneNumber(phoneNumberDto.getPhoneNumber());
     return CommonResponse.success("성공");
   }
 
-  @GetMapping("/api/users")
+  @GetMapping("/social")
   public CommonResponse<UserMyPageDataResponse> getUserData(@RequestHeader Long userId) {
 
     return CommonResponse.success(getUserInfoService.getUserdata(userId));
   }
 
-  @PutMapping("/api/users")
+  @PutMapping("/social")
   public CommonResponse<String> updateUserData(
       @Valid @RequestBody UpdateUserInfoCommand command) {
     socialUserService.updateUserInfo(command.getNickname(), command.getEmail(),

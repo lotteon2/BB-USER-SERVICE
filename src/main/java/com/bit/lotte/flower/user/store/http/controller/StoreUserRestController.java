@@ -24,7 +24,7 @@ public class StoreUserRestController {
   /**
    * @param signUpCommand Auth서버로부터 만들어지는 스토어 매니저 회원가입이다.
    */
-  @PostMapping("/users/store-manager")
+  @PostMapping("/store-manager")
   public CommonResponse<String> storeManagerSignUp(
       @RequestBody StoreManagerSignUpCommand signUpCommand) {
     storeManagerCreateService.signUp(
@@ -33,7 +33,7 @@ public class StoreUserRestController {
   }
 
 
-  @GetMapping("/users/store-managers/{storeMangerId}")
+  @GetMapping("/stores/{storeMangerId}")
   public ResponseEntity<StoreManagerLoginResponse> login(
       @PathVariable Long storeMangerId) {
     return ResponseEntity.ok(storeManagerLoginResponseService.getStoreManagerResponse(storeMangerId));
