@@ -9,12 +9,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class UserMyPageDataResponse {
+public class UserDataDto {
 
   private String nickname;
   private String phoneNumber;
   private String email;
-  private Long likesCnt;
-  private Long couponCnt;
+
 
 }

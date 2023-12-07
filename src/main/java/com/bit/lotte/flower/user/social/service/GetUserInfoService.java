@@ -1,8 +1,9 @@
 package com.bit.lotte.flower.user.social.service;
 
-import com.bit.lotte.flower.user.social.dto.response.UserMyPageDataResponse;
+import com.bit.lotte.flower.user.social.dto.response.UserDataDto;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface GetUserInfoService {
-  UserMyPageDataResponse getUserdata(Long id, Long couponCnt, Long likesCnt);
+  UserDataDto getUserdata(Long id);
+}

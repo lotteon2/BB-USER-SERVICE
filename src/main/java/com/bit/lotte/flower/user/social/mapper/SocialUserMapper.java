@@ -2,10 +2,9 @@ package com.bit.lotte.flower.user.social.mapper;
 
 
 import com.bit.lotte.flower.user.common.DefaultProfileImagerURL;
-import com.bit.lotte.flower.user.common.valueobject.AuthId;
 import com.bit.lotte.flower.user.social.dto.command.UserLoginCommand;
 import com.bit.lotte.flower.user.social.dto.response.UserLoginDataResponse;
-import com.bit.lotte.flower.user.social.dto.response.UserMyPageDataResponse;
+import com.bit.lotte.flower.user.social.dto.response.UserDataDto;
 import com.bit.lotte.flower.user.social.entity.SocialUser;
 
 public class SocialUserMapper {
@@ -39,10 +38,25 @@ public class SocialUserMapper {
             nickname).profileImage(profileImage).build();
   }
 
-  public static UserMyPageDataResponse socialUserToUserMyPageDataResponse(SocialUser socialUser,
-      Long couponCnt, Long likesCnt) {
-    return UserMyPageDataResponse.builder().couponCnt(couponCnt).likesCnt(likesCnt)
+  public static UserDataDto socialUserToUserMyPageDataResponse(SocialUser socialUser) {
+    return UserDataDto.builder()
         .email(socialUser.getEmail()).nickname(socialUser.getNickname())
         .phoneNumber(socialUser.getPhoneNumber()).build();
+  }
+
+  public static SocialUser updatedUserPhoneNumber(SocialUser socialUser, String phoneNumber) {
+    return SocialUser.builder().email(socialUser.getEmail()).isDeleted(socialUser.getIsDeleted())
+        .nickname(
+            socialUser.getNickname())
+        .phoneNumber(phoneNumber).profileImage(socialUser.getProfileImage())
+        .oauthId(socialUser.getOauthId()).id(socialUser.getId()).build();
+  }
+
+
+  public static SocialUser updateUserInfo(SocialUser socialUser, String nickname, String email,
+      String phoneNumber) {
+    return SocialUser.builder().id(socialUser.getId()).oauthId(socialUser.getOauthId())
+        .profileImage(socialUser.getProfileImage()).phoneNumber(phoneNumber).email(email)
+        .nickname(email).isDeleted(socialUser.getIsDeleted()).build();
   }
 }
