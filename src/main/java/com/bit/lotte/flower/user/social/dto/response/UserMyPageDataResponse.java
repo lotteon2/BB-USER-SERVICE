@@ -14,7 +14,7 @@ public class UserMyPageDataResponse {
   private String nickname;
   private String phoneNumber;
   private String email;
-  private String likesCnt;
-  private String counponCnt;
+  private Long likesCnt;
+  private Long couponCnt;
 
 }

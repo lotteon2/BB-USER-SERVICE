@@ -21,6 +21,7 @@ public class SocialUser {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
   private Long oauthId;
+  private String email;
   private String nickname;
   private String profileImage;
   private String phoneNumber;

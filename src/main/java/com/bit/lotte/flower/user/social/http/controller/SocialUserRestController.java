@@ -7,8 +7,10 @@ import com.bit.lotte.flower.user.social.dto.command.UpdateUserInfoCommand;
 import com.bit.lotte.flower.user.social.dto.command.UserLoginCommand;
 import com.bit.lotte.flower.user.social.dto.response.UserLoginDataResponse;
 import com.bit.lotte.flower.user.social.dto.response.UserMyPageDataResponse;
+import com.bit.lotte.flower.user.social.http.feign.GetUserLikesCntRequest;
+import com.bit.lotte.flower.user.social.service.GetUserInfoService;
 import com.bit.lotte.flower.user.social.service.SocialUserLoginManager;
-import com.bit.lotte.flower.user.social.service.SocialUserService;
+import com.bit.lotte.flower.user.social.service.SocialUpdateUserService;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +25,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SocialUserRestController {
 
+  private final GetUserLikesCntRequest getUserLikesCntRequest;
+  private final GetUserCounponCntRequest getUserLikesCntRequest;
+  private final GetUserInfoService getUserInfoService;
   private final SocialUserLoginManager socialUserLoginManager;
-  private final SocialUserService socialUserService;
+  private final SocialUpdateUserService socialUserService;
 
   @PostMapping("/users/social")
   public ResponseEntity<UserLoginDataResponse> userLogin(
@@ -42,7 +47,8 @@ public class SocialUserRestController {
 
   @GetMapping("/api/users")
   public CommonResponse<UserMyPageDataResponse> getUserData(@RequestHeader Long userId) {
-    return CommonResponse.success(socialUserService.getUserdata(userId));
+
+    return CommonResponse.success(getUserInfoService.getUserdata(userId));
   }
 
   @PutMapping("/api/users")
