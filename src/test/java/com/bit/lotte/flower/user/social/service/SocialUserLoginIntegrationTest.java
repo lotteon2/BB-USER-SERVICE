@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.bit.lotte.flower.user.common.valueobject.AuthId;
+import com.bit.lotte.flower.user.common.valueobject.UserId;
 import com.bit.lotte.flower.user.social.dto.command.UserLoginCommand;
 import com.bit.lotte.flower.user.social.dto.response.UserLoginDataResponse;
 import com.bit.lotte.flower.user.social.entity.SocialUser;
@@ -46,7 +46,7 @@ class SocialUserLoginIntegrationTest {
 
   private static UserLoginCommand getCommand(Long randomLongValue) {
     return UserLoginCommand.builder().email("test@gmail.com").nickname("testNickname")
-        .socialId(new AuthId(randomLongValue)).build();
+        .socialId(new UserId(randomLongValue)).build();
   }
 
   @BeforeEach

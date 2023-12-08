@@ -8,9 +8,9 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @Getter
-public class AuthId extends BaseId<Long> {
+public class UserId extends BaseId<Long> {
 
-  public AuthId(Long value) {
+  public UserId(Long value) {
     super(value);
   }
 

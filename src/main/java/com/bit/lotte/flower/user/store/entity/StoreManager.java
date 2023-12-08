@@ -20,4 +20,6 @@ public class StoreManager {
   private String name;
   private String email;
   private String businessNumberImage;
+
+
 }

@@ -8,7 +8,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.bit.lotte.flower.user.common.valueobject.AuthId;
+import com.bit.lotte.flower.user.common.valueobject.UserId;
 import com.bit.lotte.flower.user.social.dto.command.UserLoginCommand;
 import com.bit.lotte.flower.user.social.entity.SocialUser;
 import com.bit.lotte.flower.user.social.repository.SocialUserJpaRepository;
@@ -32,7 +32,7 @@ public class SocialUserLoginWhenUserExistTest {
 
   private UserLoginCommand getCommand() {
     return UserLoginCommand.builder().email("test@gmail.com").nickname("testNickname")
-        .socialId(new AuthId(testOauthId)).build();
+        .socialId(new UserId(testOauthId)).build();
   }
 
   private SocialUser savedSocialUser() {
