@@ -12,12 +12,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class StoreManagerLoginResponseService {
 
-  private final StoreManagerJpaRepository repository;
+  private final FindStoreMangerByLongIdService findStoreMangerByLongIdService;
 
   public StoreManagerLoginResponse getStoreManagerResponse(Long storeMangerId){
-    StoreManager storeManager = repository.findById(storeMangerId).orElseThrow(()->{
-      throw new StoreUserDomainException("존재하지 않는 스토어 매니저입니다.");
-    });
+    StoreManager storeManager = findStoreMangerByLongIdService.findByLongId(storeMangerId);
     return new StoreManagerLoginResponse(storeManager.getName());
   }
 }

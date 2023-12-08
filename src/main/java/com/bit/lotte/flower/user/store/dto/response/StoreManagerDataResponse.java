@@ -1,4 +1,4 @@
-package com.bit.lotte.flower.user.store.http.controller;
+package com.bit.lotte.flower.user.store.dto.response;
 
 
 import lombok.AllArgsConstructor;

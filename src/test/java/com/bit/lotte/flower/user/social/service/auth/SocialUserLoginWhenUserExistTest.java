@@ -1,4 +1,4 @@
-package com.bit.lotte.flower.user.social.service;
+package com.bit.lotte.flower.user.social.service.auth;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -8,10 +8,11 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.bit.lotte.flower.user.common.valueobject.AuthId;
+import com.bit.lotte.flower.user.common.valueobject.UserId;
 import com.bit.lotte.flower.user.social.dto.command.UserLoginCommand;
 import com.bit.lotte.flower.user.social.entity.SocialUser;
 import com.bit.lotte.flower.user.social.repository.SocialUserJpaRepository;
+import com.bit.lotte.flower.user.social.service.CreateNewUserWhenUserStatusIsDeleted;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,7 +33,7 @@ public class SocialUserLoginWhenUserExistTest {
 
   private UserLoginCommand getCommand() {
     return UserLoginCommand.builder().email("test@gmail.com").nickname("testNickname")
-        .socialId(new AuthId(testOauthId)).build();
+        .socialId(new UserId(testOauthId)).build();
   }
 
   private SocialUser savedSocialUser() {

@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Service
-public class GetUserInfoWithService implements
+public class GetUserInfoServiceImpl implements
     GetUserInfoService {
   private final FindSocialUserByLongIdService findUserByIdService;
   @Override

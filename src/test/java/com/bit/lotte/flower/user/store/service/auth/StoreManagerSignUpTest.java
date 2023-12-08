@@ -1,4 +1,4 @@
-package com.bit.lotte.flower.user.store.service;
+package com.bit.lotte.flower.user.store.service.auth;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -10,6 +10,7 @@ import static org.mockito.internal.verification.VerificationModeFactory.times;
 
 import com.bit.lotte.flower.user.store.entity.StoreManager;
 import com.bit.lotte.flower.user.store.repository.StoreManagerJpaRepository;
+import com.bit.lotte.flower.user.store.service.StoreManagerSignUpService;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
