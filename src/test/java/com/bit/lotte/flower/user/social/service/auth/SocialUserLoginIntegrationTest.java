@@ -1,4 +1,4 @@
-package com.bit.lotte.flower.user.social.service;
+package com.bit.lotte.flower.user.social.service.auth;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -10,6 +10,10 @@ import com.bit.lotte.flower.user.social.dto.command.UserLoginCommand;
 import com.bit.lotte.flower.user.social.dto.response.UserLoginDataResponse;
 import com.bit.lotte.flower.user.social.entity.SocialUser;
 import com.bit.lotte.flower.user.social.repository.SocialUserJpaRepository;
+import com.bit.lotte.flower.user.social.service.SocialUserCreateService;
+import com.bit.lotte.flower.user.social.service.SocialUserLoginManager;
+import com.bit.lotte.flower.user.social.service.SocialUserLoginResponseService;
+import com.bit.lotte.flower.user.social.service.SocialUserLoginWhenUserExist;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;

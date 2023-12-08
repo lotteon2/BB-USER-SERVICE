@@ -1,7 +1,5 @@
 package com.bit.lotte.flower.user.store.service;
 
-import com.bit.lotte.flower.user.common.valueobject.BaseId;
-import com.bit.lotte.flower.user.common.valueobject.UserId;
 import com.bit.lotte.flower.user.store.entity.StoreManager;
 import com.bit.lotte.flower.user.store.exception.StoreUserDomainException;
 import com.bit.lotte.flower.user.store.repository.StoreManagerJpaRepository;

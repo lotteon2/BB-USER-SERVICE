@@ -1,4 +1,4 @@
-package com.bit.lotte.flower.user.social.service;
+package com.bit.lotte.flower.user.social.service.auth;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -8,6 +8,7 @@ import com.bit.lotte.flower.user.social.dto.response.UserLoginDataResponse;
 import com.bit.lotte.flower.user.social.entity.SocialUser;
 import com.bit.lotte.flower.user.social.exception.SocialUserDomainException;
 import com.bit.lotte.flower.user.social.repository.SocialUserJpaRepository;
+import com.bit.lotte.flower.user.social.service.SocialUserLoginResponseService;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

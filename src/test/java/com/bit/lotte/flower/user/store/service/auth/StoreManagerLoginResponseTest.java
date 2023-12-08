@@ -1,4 +1,4 @@
-package com.bit.lotte.flower.user.store.service;
+package com.bit.lotte.flower.user.store.service.auth;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -12,6 +12,7 @@ import com.bit.lotte.flower.user.store.dto.response.StoreManagerLoginResponse;
 import com.bit.lotte.flower.user.store.entity.StoreManager;
 import com.bit.lotte.flower.user.store.exception.StoreUserDomainException;
 import com.bit.lotte.flower.user.store.repository.StoreManagerJpaRepository;
+import com.bit.lotte.flower.user.store.service.StoreManagerLoginResponseService;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

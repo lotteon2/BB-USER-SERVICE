@@ -10,7 +10,7 @@ import com.bit.lotte.flower.user.social.dto.response.UserDataDto;
 import com.bit.lotte.flower.user.social.dto.response.UserMypageResponse;
 import com.bit.lotte.flower.user.social.http.message.GetUserCouponCntRequest;
 import com.bit.lotte.flower.user.social.http.message.GetUserLikesCntRequest;
-import com.bit.lotte.flower.user.social.service.GetUserInfoService;
+import com.bit.lotte.flower.user.social.service.GetUserInfoServiceImpl;
 import com.bit.lotte.flower.user.social.service.SocialUserLoginManager;
 import com.bit.lotte.flower.user.social.service.SocialUpdateUserService;
 import javax.validation.Valid;
@@ -29,7 +29,7 @@ public class SocialUserRestController {
 
   private final GetUserLikesCntRequest getUserLikesCntRequest;
   private final GetUserCouponCntRequest getUserCouponCntRequest;
-  private final GetUserInfoService getUserInfoService;
+  private final GetUserInfoServiceImpl getUserInfoServiceImpl;
   private final SocialUserLoginManager socialUserLoginManager;
   private final SocialUpdateUserService socialUserService;
 
@@ -49,7 +49,7 @@ public class SocialUserRestController {
 
   @GetMapping("/social")
   public CommonResponse<UserMypageResponse<UserDataDto>> getUserData(@RequestHeader Long userId) {
-    UserDataDto userDataDto = getUserInfoService.getUserdata(userId);
+    UserDataDto userDataDto = getUserInfoServiceImpl.getUserdata(userId);
     Long userLikesCnt = getUserLikesCntRequest.request(userId);
     Long userCouponCnt = getUserCouponCntRequest.request(userId);
     return CommonResponse.success(getUserMypageResponse(userDataDto, userLikesCnt, userCouponCnt));
