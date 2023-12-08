@@ -5,12 +5,15 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDataResponse {
+@Getter
+public class UserDataDto {
+
   private String nickname;
-  private boolean isPhoneNumberIsRegistered;
-  private String profileImage;
+  private String phoneNumber;
+  private String email;
+
+
 }

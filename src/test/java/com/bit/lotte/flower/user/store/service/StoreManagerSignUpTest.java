@@ -1,10 +1,13 @@
 package com.bit.lotte.flower.user.store.service;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.mockito.internal.verification.VerificationModeFactory.times;
 
-import com.bit.lotte.flower.user.store.dto.command.StoreManagerSignUpCommand;
 import com.bit.lotte.flower.user.store.entity.StoreManager;
 import com.bit.lotte.flower.user.store.repository.StoreManagerJpaRepository;
 import java.util.Optional;
@@ -19,36 +22,22 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class StoreManagerSignUpTest {
 
-  private final Long testUserId = 1L;
   @Mock
   StoreManagerJpaRepository repository;
   @InjectMocks
   StoreManagerSignUpService storeManagerSignUpService;
 
-  private StoreManagerSignUpCommand createTestStoreManagerAccount() {
-    return StoreManagerSignUpCommand.builder().businessNumberImage("randomImage")
-        .email("randomEmail").name("randomName").id(testUserId).build();
-  }
-
-  private StoreManager getStoreManagerFromCommand(StoreManagerSignUpCommand signUpCommand) {
-    return StoreManager.builder().businessNumberImage(signUpCommand.getBusinessNumberImage()).email(
-        signUpCommand.getEmail()).id(signUpCommand.getId()).name(signUpCommand.getName()).build();
-  }
-
 
   @DisplayName("스토어 매니저 회원가입 테스트")
   @Test
   void SignUp_WhenThereIsRequestFromAuthSever_CreateStoreManager() {
-    StoreManager manager =
-        getStoreManagerFromCommand(createTestStoreManagerAccount());
 
-    when(repository.save(any(StoreManager.class))).thenReturn(manager);
-    when(repository.findById(testUserId)).thenReturn(Optional.of(manager));
+    when(repository.save(any(StoreManager.class))).thenReturn(mock(StoreManager.class));
 
-    storeManagerSignUpService.signUp(manager);
+    storeManagerSignUpService.signUp(mock(StoreManager.class));
 
-    assertNotNull(repository.findById(testUserId).orElse(null));
+    verify(repository, times(1)).save(any(StoreManager.class));
+
   }
-
 
 }

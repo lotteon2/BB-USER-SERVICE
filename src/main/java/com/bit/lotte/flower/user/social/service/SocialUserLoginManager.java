@@ -1,7 +1,7 @@
 package com.bit.lotte.flower.user.social.service;
 
 import com.bit.lotte.flower.user.social.dto.command.UserLoginCommand;
-import com.bit.lotte.flower.user.social.dto.response.UserDataResponse;
+import com.bit.lotte.flower.user.social.dto.response.UserLoginDataResponse;
 import com.bit.lotte.flower.user.social.repository.SocialUserJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class SocialUserLoginManager {
   private final SocialUserLoginWhenUserExist socialUserLoginWhenUserExist ;
   private final SocialUserLoginResponseService socialUserLoginResponseService;
 
-  public UserDataResponse process(UserLoginCommand userLoginCommand){
+  public UserLoginDataResponse process(UserLoginCommand userLoginCommand){
     Long oauthId = userLoginCommand.getSocialId().getValue();
     if(!repository.findAllByOauthId(oauthId).isEmpty()){
     socialUserLoginWhenUserExist.processUser(userLoginCommand);

@@ -1,6 +1,6 @@
 package com.bit.lotte.flower.user.social.service;
 
-import com.bit.lotte.flower.user.social.dto.response.UserDataResponse;
+import com.bit.lotte.flower.user.social.dto.response.UserLoginDataResponse;
 import com.bit.lotte.flower.user.social.entity.SocialUser;
 import com.bit.lotte.flower.user.social.exception.SocialUserDomainException;
 import com.bit.lotte.flower.user.social.mapper.SocialUserMapper;
@@ -14,7 +14,7 @@ public class SocialUserDataResponseService {
 
   private final SocialUserJpaRepository repository;
 
-  public UserDataResponse getUserData(Long oauthId) {
+  public UserLoginDataResponse getUserData(Long oauthId) {
     SocialUser socialUser = repository.findByOauthIdAndIsDeletedFalse(oauthId)
         .orElseThrow(() -> {
           throw new SocialUserDomainException("존재하지 않은 소셜 유저 계정입니다.");

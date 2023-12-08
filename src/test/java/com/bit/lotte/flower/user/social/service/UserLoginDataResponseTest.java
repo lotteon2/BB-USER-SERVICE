@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
-import com.bit.lotte.flower.user.social.dto.response.UserDataResponse;
+import com.bit.lotte.flower.user.social.dto.response.UserLoginDataResponse;
 import com.bit.lotte.flower.user.social.entity.SocialUser;
 import com.bit.lotte.flower.user.social.exception.SocialUserDomainException;
 import com.bit.lotte.flower.user.social.repository.SocialUserJpaRepository;
@@ -51,7 +51,7 @@ class UserLoginDataResponseTest {
     when(repository.findByOauthIdAndIsDeletedFalse(testValidOauthId)).thenReturn(
         Optional.of(savedSocialUser()));
 
-    UserDataResponse response =loginResponseService.getUserLoginResponseWithNotSoftDeleted(testValidOauthId);
+    UserLoginDataResponse response =loginResponseService.getUserLoginResponseWithNotSoftDeleted(testValidOauthId);
 
     assertNotNull(response);
 
