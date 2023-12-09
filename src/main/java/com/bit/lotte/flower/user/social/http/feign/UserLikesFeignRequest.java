@@ -4,9 +4,10 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-
-@FeignClient(name = "get-user-likes-cnt", value = "${service.likes.domain}")
+@RequestMapping("${service.likes.domain}")
+@FeignClient(name = "get-user-likes-cnt")
 public interface UserLikesFeignRequest {
 
   @GetMapping("/likes-cnt")
