@@ -16,18 +16,11 @@ spring:
         ddl-auto: update
       show-sql: true
 
-feign:
-  client:
-    default:
-      url: http://localhost:8082
-    config:
-      default:
-        connectTimeout: 5000
-        readTimeout: 5000
-        loggerLevel: basic
 
 service:
   coupon:
     domain : http://localhost:9999
   likes:
     domain : http://localhost:8888
+  auth:
+    domain : http://localhost:9000
