@@ -40,7 +40,7 @@ public class SocialUserMapper {
 
   public static UserDataDto socialUserToUserMyPageDataResponse(SocialUser socialUser) {
     return UserDataDto.builder()
-        .email(socialUser.getEmail()).nickname(socialUser.getNickname())
+        .email(socialUser.getEmail()).nickname(socialUser.getNickname()).profileImage(socialUser.getProfileImage())
         .phoneNumber(socialUser.getPhoneNumber()).build();
   }
 

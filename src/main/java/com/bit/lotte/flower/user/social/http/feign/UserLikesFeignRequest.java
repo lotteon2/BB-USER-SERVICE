@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 
-@FeignClient(name = "get-user-likes-cnt")
+@FeignClient(name = "get-user-likes-cnt", url = "${service.likes.domain}")
 public interface UserLikesFeignRequest {
 
   @GetMapping("/likes-cnt")

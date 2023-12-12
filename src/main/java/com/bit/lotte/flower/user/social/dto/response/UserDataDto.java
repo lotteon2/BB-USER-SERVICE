@@ -14,6 +14,8 @@ public class UserDataDto {
   private String nickname;
   private String phoneNumber;
   private String email;
+  private String profileImage;
+
 
 
 }
