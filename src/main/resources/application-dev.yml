@@ -8,21 +8,10 @@ spring:
       on-profile: dev
     import: optional:configserver:http://localhost:8888
 
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: none
 
-feign:
-  client:
-    config:
-      default:
-        connectTimeout: 5000
-        readTimeout: 5000
-        loggerLevel: basic
-
-service:
-  coupon:
-    domain : ${service.coupon.domain}
-  likes:
-    domain : ${servive.likes.domain}
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "refresh"
+          - "bus-refresh"
