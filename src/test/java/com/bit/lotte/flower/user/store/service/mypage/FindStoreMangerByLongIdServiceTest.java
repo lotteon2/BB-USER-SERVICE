@@ -1,4 +1,4 @@
-package com.bit.lotte.flower.user.store.service;
+package com.bit.lotte.flower.user.store.service.mypage;
 
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -11,6 +11,7 @@ import static org.mockito.Mockito.when;
 import com.bit.lotte.flower.user.store.entity.StoreManager;
 import com.bit.lotte.flower.user.store.exception.StoreUserDomainException;
 import com.bit.lotte.flower.user.store.repository.StoreManagerJpaRepository;
+import com.bit.lotte.flower.user.store.service.FindStoreMangerByLongIdService;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

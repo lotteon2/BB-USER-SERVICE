@@ -1,4 +1,4 @@
-package com.bit.lotte.flower.user.store.service;
+package com.bit.lotte.flower.user.store.service.mypage;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -14,6 +14,8 @@ import com.bit.lotte.flower.user.common.valueobject.UserId;
 import com.bit.lotte.flower.user.store.entity.StoreManager;
 import com.bit.lotte.flower.user.store.exception.StoreUserDomainException;
 import com.bit.lotte.flower.user.store.repository.StoreManagerJpaRepository;
+import com.bit.lotte.flower.user.store.service.FindStoreMangerByLongIdService;
+import com.bit.lotte.flower.user.store.service.StoreManagerServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

@@ -12,6 +12,7 @@ import com.bit.lotte.flower.user.store.dto.response.StoreManagerLoginResponse;
 import com.bit.lotte.flower.user.store.entity.StoreManager;
 import com.bit.lotte.flower.user.store.exception.StoreUserDomainException;
 import com.bit.lotte.flower.user.store.repository.StoreManagerJpaRepository;
+import com.bit.lotte.flower.user.store.service.FindStoreMangerByLongIdService;
 import com.bit.lotte.flower.user.store.service.StoreManagerLoginResponseService;
 import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
@@ -25,10 +26,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class StoreManagerLoginResponseTest {
 
-  @InjectMocks
-  StoreManagerLoginResponseService loginResponseService;
   @Mock
   StoreManagerJpaRepository repository;
+  @Mock
+  FindStoreMangerByLongIdService findStoreMangerByLongIdService;
+  @InjectMocks
+  StoreManagerLoginResponseService loginResponseService;
+
   private final Long validStoreManagerId = 1L;
 
 
@@ -40,7 +44,7 @@ class StoreManagerLoginResponseTest {
   @DisplayName("스토어 매니저 로그인시 유저가 존재할 때 유저 네임 반환")
   @Test
   void UserNameResponse_WhenUserIsExist_GetUserName() {
-    when(repository.findById(validStoreManagerId)).thenReturn(Optional.of(initUser()));
+    when(findStoreMangerByLongIdService.findByLongId(validStoreManagerId)).thenReturn(initUser());
 
     StoreManagerLoginResponse response = loginResponseService.getStoreManagerResponse(
         validStoreManagerId);
@@ -51,8 +55,7 @@ class StoreManagerLoginResponseTest {
   @Test
   void UserNameResponse_WhenUserIsExist_ThrowStoreUserDomainException() {
 
-    when(repository.findById(anyLong())).thenReturn(Optional.empty());
-
+when(findStoreMangerByLongIdService.findByLongId(validStoreManagerId)).thenThrow(StoreUserDomainException.class);
     assertThrows(StoreUserDomainException.class, () -> {
       loginResponseService.getStoreManagerResponse(validStoreManagerId);
     });
