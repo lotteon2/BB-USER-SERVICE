@@ -3,8 +3,6 @@ package com.bit.lotte.flower.user.store.service;
 
 import com.bit.lotte.flower.user.store.dto.response.StoreManagerLoginResponse;
 import com.bit.lotte.flower.user.store.entity.StoreManager;
-import com.bit.lotte.flower.user.store.exception.StoreUserDomainException;
-import com.bit.lotte.flower.user.store.repository.StoreManagerJpaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class StoreManagerLoginResponseService {
 
-  private final FindStoreMangerByLongIdService findStoreMangerByLongIdService;
+  private final FindStoreMangerService findStoreMangerByLongIdService;
 
   public StoreManagerLoginResponse getStoreManagerResponse(Long storeMangerId){
     StoreManager storeManager = findStoreMangerByLongIdService.findByLongId(storeMangerId);

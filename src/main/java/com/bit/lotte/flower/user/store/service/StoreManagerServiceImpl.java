@@ -1,5 +1,6 @@
 package com.bit.lotte.flower.user.store.service;
 
+import com.bit.lotte.flower.user.common.valueobject.StoreId;
 import com.bit.lotte.flower.user.common.valueobject.UserId;
 import com.bit.lotte.flower.user.store.entity.StoreManager;
 import com.bit.lotte.flower.user.store.mapper.StoreManagerMapper;
@@ -13,13 +14,14 @@ public class StoreManagerServiceImpl implements
     StoreManagerService<UserId> {
 
   private final StoreManagerJpaRepository repository;
-  private final FindStoreMangerByLongIdService findStoreMangerByIdService;
+  private final FindStoreMangerService findStoreMangerByIdService;
 
   @Override
-  public void updateBusinessNumber(UserId userId, String businessNumberImage) {
-    StoreManager storeManager = findStoreMangerByIdService.findByLongId(userId.getValue());
+  public UserId updateBusinessNumber(String email, String businessNumberImage) {
+    StoreManager storeManager = findStoreMangerByIdService.findByEmail(email);
    repository.save(StoreManagerMapper.storeManagerUpdatedPhoneNumber(
         storeManager, businessNumberImage));
 
+   return new UserId(storeManager.getId());
   }
 }

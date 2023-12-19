@@ -14,7 +14,7 @@ import com.bit.lotte.flower.user.common.valueobject.UserId;
 import com.bit.lotte.flower.user.store.entity.StoreManager;
 import com.bit.lotte.flower.user.store.exception.StoreUserDomainException;
 import com.bit.lotte.flower.user.store.repository.StoreManagerJpaRepository;
-import com.bit.lotte.flower.user.store.service.FindStoreMangerByLongIdService;
+import com.bit.lotte.flower.user.store.service.FindStoreMangerService;
 import com.bit.lotte.flower.user.store.service.StoreManagerServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,7 +28,7 @@ class StoreManagerServiceImplTest {
   @Mock
   StoreManagerJpaRepository repository;
   @Mock
-  FindStoreMangerByLongIdService findStoreMangerByLongIdService;
+  FindStoreMangerService findStoreMangerByLongIdService;
   @InjectMocks
   StoreManagerServiceImpl storeManagerService;
 
@@ -36,9 +36,10 @@ class StoreManagerServiceImplTest {
   void UpdateStoreManagerBusinessNumber_WhenStoreUserExist_SaveOccuredOnce() {
     StoreManager mockStoreManager = mock(StoreManager.class);
 
-    when(findStoreMangerByLongIdService.findByLongId(mockStoreManager.getId())).thenReturn(
+    when(findStoreMangerByLongIdService.findByEmail(mockStoreManager.getEmail())).thenReturn(
         mockStoreManager);
-    storeManagerService.updateBusinessNumber(new UserId(mockStoreManager.getId()),
+
+    storeManagerService.updateBusinessNumber(mockStoreManager.getEmail(),
         mockStoreManager.getBusinessNumberImage());
 
     verify(repository, times(1)).save(any(StoreManager.class));
@@ -48,11 +49,11 @@ class StoreManagerServiceImplTest {
   @Test
   void UpdateStoreManagerPhoneNumber_WhenStoreUserExist_ThrowStoreUserException() {
 
-    when(findStoreMangerByLongIdService.findByLongId(anyLong())).thenThrow(
+    when(findStoreMangerByLongIdService.findByEmail(anyString())).thenThrow(
         StoreUserDomainException.class);
 
     assertThrowsExactly(StoreUserDomainException.class,()->{
-      storeManagerService.updateBusinessNumber(new UserId(anyLong()),"business Number");
+      storeManagerService.updateBusinessNumber("test@email.com","business Number");
     });
   }
 

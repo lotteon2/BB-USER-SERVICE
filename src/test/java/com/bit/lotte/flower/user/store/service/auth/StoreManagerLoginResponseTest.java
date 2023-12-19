@@ -5,16 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.when;
 
 import com.bit.lotte.flower.user.store.dto.response.StoreManagerLoginResponse;
 import com.bit.lotte.flower.user.store.entity.StoreManager;
 import com.bit.lotte.flower.user.store.exception.StoreUserDomainException;
 import com.bit.lotte.flower.user.store.repository.StoreManagerJpaRepository;
-import com.bit.lotte.flower.user.store.service.FindStoreMangerByLongIdService;
+import com.bit.lotte.flower.user.store.service.FindStoreMangerService;
 import com.bit.lotte.flower.user.store.service.StoreManagerLoginResponseService;
-import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,7 +27,7 @@ class StoreManagerLoginResponseTest {
   @Mock
   StoreManagerJpaRepository repository;
   @Mock
-  FindStoreMangerByLongIdService findStoreMangerByLongIdService;
+  FindStoreMangerService findStoreMangerByLongIdService;
   @InjectMocks
   StoreManagerLoginResponseService loginResponseService;
 

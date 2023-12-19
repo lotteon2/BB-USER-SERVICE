@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class FindStoreMangerByLongIdService {
+public class FindStoreMangerService {
 
   private final StoreManagerJpaRepository repository;
 
@@ -17,6 +17,13 @@ public class FindStoreMangerByLongIdService {
       throw new StoreUserDomainException("존재하지 않는 스토어 매니저입니다.");
     });
   }
+    public StoreManager findByEmail(String  email) {
+    return repository.findByEmail(email).orElseThrow(()->{
+      throw new StoreUserDomainException("존재하지 않는 스토어 매니저입니다.");
+    });
+  }
+
+
 
 
 }

@@ -1,6 +1,7 @@
 package com.bit.lotte.flower.user.store.http.controller;
 
 import bloomingblooms.response.CommonResponse;
+import com.bit.lotte.flower.user.common.valueobject.StoreId;
 import com.bit.lotte.flower.user.common.valueobject.UserId;
 import com.bit.lotte.flower.user.store.dto.command.UpdateBusinessNumberCommand;
 import com.bit.lotte.flower.user.store.dto.response.StoreManagerLoginResponse;
@@ -50,11 +51,10 @@ public class StoreUserRestController {
 
   @PatchMapping("/stores")
   public ResponseEntity<String> reRegisterBusinessNumber(
-      @RequestBody UpdateBusinessNumberCommand command,
-      @PathVariable Long storeMangerId) {
-    storeManagerService.updateBusinessNumber(new UserId(storeMangerId),
+      @RequestBody UpdateBusinessNumberCommand command) {
+    UserId storeId = storeManagerService.updateBusinessNumber(command.getEmail(),
         command.getBusinessNumberImage());
-    publisher.publish(new UserId(storeMangerId));
+    publisher.publish(storeId);
     return ResponseEntity.ok("초기화 요청 완료");
   }
 
