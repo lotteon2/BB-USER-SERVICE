@@ -1,5 +1,7 @@
-package com.bit.lotte.flower.user.admin.dto;
+package com.bit.lotte.flower.user.admin.dto.response;
 
+import com.bit.lotte.flower.user.admin.dto.SettlementDto;
+import com.bit.lotte.flower.user.admin.dto.StoreDto;
 import com.bit.lotte.flower.user.common.valueobject.StoreId;
 import java.util.List;
 import lombok.AllArgsConstructor;
