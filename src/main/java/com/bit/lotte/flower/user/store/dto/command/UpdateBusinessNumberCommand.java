@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class UpdateBusinessNumberCommand {
-
+  private String email;
   private String businessNumberImage;
 }
