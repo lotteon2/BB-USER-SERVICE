@@ -13,36 +13,36 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SystemAdminRestController {
 
-
-  @GetMapping("/admin/settlement")
-  public CommonResponse<SettlementResponse<StoreId>> getSettlements(
-      @RequestParam int year,
-      @RequestParam int month,
-      @RequestParam Long storeId,
-      @RequestParam Pageable pageable) {
-
-  }
-
-  @GetMapping("/admin/stores")
-  public CommonResponse<StoreInfoResponse> getStoreInfo(
-      @RequestParam String sido,
-      @RequestParam String gugun,
-      @RequestParam Pageable pageable) {
-
-  }
-
-  @GetMapping("/admin/store-managers/applications")
-  public CommonResponse<StoreInfoResponse> getStroeManagerApplications(
-      @RequestParam StoreManagerStatus status,
-      @RequestParam Pageable pageable) {
-
-  }
-
-
-    @GetMapping("/admin/sales")
-  public CommonResponse<StoreInfoResponse> getSalesTop10() {
-
-  }
+//
+//  @GetMapping("/admin/settlement")
+//  public CommonResponse<SettlementResponse<StoreId>> getSettlements(
+//      @RequestParam int year,
+//      @RequestParam int month,
+//      @RequestParam Long storeId,
+//      @RequestParam Pageable pageable) {
+//
+//  }
+//
+//  @GetMapping("/admin/stores")
+//  public CommonResponse<StoreInfoResponse> getStoreInfo(
+//      @RequestParam String sido,
+//      @RequestParam String gugun,
+//      @RequestParam Pageable pageable) {
+//
+//  }
+//
+//  @GetMapping("/admin/store-managers/applications")
+//  public CommonResponse<StoreInfoResponse> getStroeManagerApplications(
+//      @RequestParam StoreManagerStatus status,
+//      @RequestParam Pageable pageable) {
+//
+//  }
+//
+//
+//    @GetMapping("/admin/sales")
+//  public CommonResponse<StoreInfoResponse> getSalesTop10() {
+//
+//  }
 
 
 
