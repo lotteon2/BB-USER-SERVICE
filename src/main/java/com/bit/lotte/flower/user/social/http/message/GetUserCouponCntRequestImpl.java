@@ -1,7 +1,6 @@
 package com.bit.lotte.flower.user.social.http.message;
 
 import com.bit.lotte.flower.user.social.http.feign.UserUsableCouponCntFeignRequest;
-import java.util.Objects;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
