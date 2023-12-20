@@ -3,10 +3,7 @@ package com.bit.lotte.flower.user.admin.service;
 
 import com.bit.lotte.flower.user.admin.dto.StoreManagerApplicationData;
 import com.bit.lotte.flower.user.admin.dto.response.StoreManagerApplicationFormResponse;
-import com.bit.lotte.flower.user.common.valueobject.StoreManagerStatus;
-import com.bit.lotte.flower.user.social.repository.FindSocialUserByLongIdService;
 import com.bit.lotte.flower.user.store.entity.StoreManager;
-import com.bit.lotte.flower.user.store.repository.StoreManagerJpaRepository;
 import com.bit.lotte.flower.user.store.service.FindStoreMangerService;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +27,6 @@ public class GetStoreManagerApplicationService {
     for (Long id : storeManagerIdList) {
       storeManagerListByStatus.add(findStoreMangerService.findByLongId(id));
     }
-
         List < StoreManagerApplicationData > data = mapToData(storeManagerListByStatus);
 
     return StoreManagerApplicationFormResponse.builder().data(data).totalCnt(data.size()).build();
@@ -40,9 +36,11 @@ public class GetStoreManagerApplicationService {
   public List<StoreManagerApplicationData> mapToData(List<StoreManager> managerList) {
     List<StoreManagerApplicationData> applicationDataList = new ArrayList<>();
     for (StoreManager storeManager : managerList) {
-      applicationDataList.add(StoreManagerApplicationData.builder()
-          .requestDate(storeManager.getUpdatedAt()).storeManagerName(storeManager.getName())
-          .storeManagerBusinessNumber(storeManager.getBusinessNumberImage()).build());
+      applicationDataList.add(
+          StoreManagerApplicationData.builder().key(storeManager.getId())
+              .storeManagerName(storeManager.getName())
+              .requestDate(storeManager.getCreatedAt())
+              .storeManagerBusinessNumber(storeManager.getBusinessNumberImage()).build());
     }
     return applicationDataList;
   }

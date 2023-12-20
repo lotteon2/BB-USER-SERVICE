@@ -1,5 +1,6 @@
 package com.bit.lotte.flower.user.social.entity;
 
+import com.bit.lotte.flower.user.common.entity.BaseEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class SocialUser {
+public class SocialUser extends BaseEntity{
 
   @Id
   private Long id;
