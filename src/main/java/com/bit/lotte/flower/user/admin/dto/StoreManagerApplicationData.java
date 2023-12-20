@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 public class StoreManagerApplicationData {
-  private StoreId key;
+  private Long key;
   private String storeManagerName;
   private String storeManagerBusinessNumber;
   private LocalDateTime requestDate;
