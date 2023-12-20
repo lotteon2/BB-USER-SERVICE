@@ -19,7 +19,6 @@ import lombok.NoArgsConstructor;
 public class SocialUser {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
   private Long oauthId;
   private String email;
