@@ -1,25 +1,15 @@
-
 server:
   port: 8600
-
 spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
   application:
     name: user-service
   config:
     activate:
       on-profile: local
     import: optional:configserver:http://localhost:8888
-
-  datasource:
-    url: jdbc:mysql://localhost:3306/develop?serverTimezone=Asia/Seoul&useUnicode=true&characterEncoding=utf8
-    username: root
-    password: 123456
-    driver-class-name: com.mysql.cj.jdbc.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: create
-    show-sql: true
 
 management:
   endpoints:
@@ -28,10 +18,4 @@ management:
         include:
           - "refresh"
           - "bus-refresh"
-service:
-  store:
-    domain : http://localhost:8700
-  likes:
-    domain : http://localhost:8500
-  auth:
-    domain : http://localhost:9000
+          - "health"
