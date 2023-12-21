@@ -7,7 +7,6 @@ import com.bit.lotte.flower.user.social.dto.response.UserLoginDataResponse;
 import com.bit.lotte.flower.user.social.service.SocialUserLoginManager;
 import com.bit.lotte.flower.user.social.service.SoftDeleteStrategyService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;

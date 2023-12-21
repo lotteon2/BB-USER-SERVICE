@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class UserMypageResponse<T extends UserDataDto> {
-  Long couponCnt;
+  Integer couponCnt;
   Long likesCnt;
   T data;
 

@@ -16,6 +16,8 @@ public class FindSocialUserByLongIdService {
     return repository.findById(id).orElseThrow(() -> {
       throw new SocialUserDomainException("존재하지 않는 회원입니다.");
     });
+
+
   }
 
 }

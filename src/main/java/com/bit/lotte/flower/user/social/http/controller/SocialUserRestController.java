@@ -2,22 +2,19 @@ package com.bit.lotte.flower.user.social.http.controller;
 
 
 import bloomingblooms.response.CommonResponse;
+import com.bit.lotte.flower.user.common.valueobject.AuthId;
 import com.bit.lotte.flower.user.social.dto.UserPhoneNumberDto;
 import com.bit.lotte.flower.user.social.dto.command.UpdateUserInfoCommand;
-import com.bit.lotte.flower.user.social.dto.command.UserLoginCommand;
-import com.bit.lotte.flower.user.social.dto.response.UserLoginDataResponse;
 import com.bit.lotte.flower.user.social.dto.response.UserDataDto;
 import com.bit.lotte.flower.user.social.dto.response.UserMypageResponse;
 import com.bit.lotte.flower.user.social.http.message.GetUserCouponCntRequest;
 import com.bit.lotte.flower.user.social.http.message.GetUserLikesCntRequest;
 import com.bit.lotte.flower.user.social.service.GetUserInfoServiceImpl;
-import com.bit.lotte.flower.user.social.service.SocialUserLoginManager;
+import com.bit.lotte.flower.user.social.service.MapAuthIdToUserIdService;
 import com.bit.lotte.flower.user.social.service.SocialUpdateUserService;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -27,37 +24,34 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SocialUserRestController {
 
+  private final MapAuthIdToUserIdService<AuthId> mapAuthIdToUserIdService;
   private final GetUserLikesCntRequest getUserLikesCntRequest;
   private final GetUserCouponCntRequest getUserCouponCntRequest;
   private final GetUserInfoServiceImpl getUserInfoServiceImpl;
   private final SocialUpdateUserService socialUserService;
 
 
-  @PutMapping("/social/phone-number")
-  public CommonResponse<String> userPhoneNumberUpdate(
-      @RequestBody UserPhoneNumberDto phoneNumberDto, @RequestHeader Long userId) {
-    socialUserService.updatePhoneNumber(userId, phoneNumberDto.getPhoneNumber());
-    return CommonResponse.success("성공");
-  }
 
   @GetMapping("/social")
   public CommonResponse<UserMypageResponse<UserDataDto>> getUserData(@RequestHeader Long userId) {
-    UserDataDto userDataDto = getUserInfoServiceImpl.getUserdata(userId);
-    Long userLikesCnt = getUserLikesCntRequest.request(userId);
-    Long userCouponCnt = getUserCouponCntRequest.request(userId);
+    Long oauthIdToUserId = mapAuthIdToUserIdService.convert(new AuthId(userId)).getValue();
+    UserDataDto userDataDto = getUserInfoServiceImpl.getUserdata(oauthIdToUserId);
+    Long userLikesCnt = getUserLikesCntRequest.request(oauthIdToUserId);
+    Integer userCouponCnt = getUserCouponCntRequest.request(oauthIdToUserId);
     return CommonResponse.success(getUserMypageResponse(userDataDto, userLikesCnt, userCouponCnt));
   }
 
   @PutMapping("/social")
   public CommonResponse<String> updateUserData(@RequestHeader Long userId,
       @Valid @RequestBody UpdateUserInfoCommand command) {
-    socialUserService.updateUserInfo(userId, command.getNickname(), command.getEmail(),
+    Long oauthIdToUserId = mapAuthIdToUserIdService.convert(new AuthId(userId)).getValue();
+    socialUserService.updateUserInfo(oauthIdToUserId, command.getNickname(), command.getEmail(),
         command.getPhoneNumber());
     return CommonResponse.success("업데이트 성공");
   }
 
   private UserMypageResponse<UserDataDto> getUserMypageResponse(UserDataDto userDataDto, Long likesCnt,
-      Long couponCnt) {
+      Integer couponCnt) {
     return UserMypageResponse.builder().data(userDataDto).couponCnt(couponCnt)
         .likesCnt(likesCnt).build();
   }
