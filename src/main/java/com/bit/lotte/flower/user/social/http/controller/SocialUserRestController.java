@@ -3,7 +3,6 @@ package com.bit.lotte.flower.user.social.http.controller;
 
 import bloomingblooms.response.CommonResponse;
 import com.bit.lotte.flower.user.common.valueobject.AuthId;
-import com.bit.lotte.flower.user.social.dto.UserPhoneNumberDto;
 import com.bit.lotte.flower.user.social.dto.command.UpdateUserInfoCommand;
 import com.bit.lotte.flower.user.social.dto.response.UserDataDto;
 import com.bit.lotte.flower.user.social.dto.response.UserMypageResponse;
@@ -15,7 +14,6 @@ import com.bit.lotte.flower.user.social.service.SocialUpdateUserService;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
