@@ -1,9 +1,11 @@
 package com.bit.lotte.flower.user.social.http.feign;
 
 import bloomingblooms.response.CommonResponse;
+import com.bit.lotte.flower.user.common.valueobject.AuthId;
 import com.bit.lotte.flower.user.common.valueobject.UserId;
 import com.bit.lotte.flower.user.social.dto.command.UserLoginCommand;
 import com.bit.lotte.flower.user.social.dto.response.UserLoginDataResponse;
+import com.bit.lotte.flower.user.social.service.MapAuthIdToUserIdService;
 import com.bit.lotte.flower.user.social.service.SocialUserLoginManager;
 import com.bit.lotte.flower.user.social.service.SoftDeleteStrategyService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserFeignController {
 
+  private final MapAuthIdToUserIdService<AuthId> mapAuthIdToUserIdService;
   private final SoftDeleteStrategyService softDeleteStrategyService;
   private final SocialUserLoginManager socialUserLoginManager;
 
@@ -31,7 +34,8 @@ public class UserFeignController {
 
   @PutMapping("/client/users/{userId}")
   CommonResponse<Boolean> delete(@PathVariable Long userId) {
-    softDeleteStrategyService.userWithdrawal(new UserId(userId));
+    UserId convertedUserId = mapAuthIdToUserIdService.convert(new AuthId(userId));
+    softDeleteStrategyService.userWithdrawal(convertedUserId);
     return CommonResponse.success(Boolean.TRUE);
   }
 
