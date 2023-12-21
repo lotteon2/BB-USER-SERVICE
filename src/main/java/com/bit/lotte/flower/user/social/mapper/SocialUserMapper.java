@@ -57,6 +57,13 @@ public class SocialUserMapper {
       String phoneNumber) {
     return SocialUser.builder().id(socialUser.getId()).oauthId(socialUser.getOauthId())
         .profileImage(socialUser.getProfileImage()).phoneNumber(phoneNumber).email(email)
-        .nickname(email).isDeleted(socialUser.getIsDeleted()).build();
+        .nickname(nickname).isDeleted(socialUser.getIsDeleted()).build();
+  }
+
+  public static SocialUser changeUserStatus(SocialUser socialUser, Boolean status) {
+    return SocialUser.builder().id(socialUser.getId()).oauthId(socialUser.getOauthId())
+        .profileImage(socialUser.getProfileImage()).phoneNumber(socialUser.getPhoneNumber())
+        .email(socialUser.getEmail())
+        .nickname(socialUser.getNickname()).isDeleted(status).build();
   }
 }
