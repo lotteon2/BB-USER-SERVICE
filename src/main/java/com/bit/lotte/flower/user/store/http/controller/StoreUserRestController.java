@@ -1,18 +1,16 @@
 package com.bit.lotte.flower.user.store.http.controller;
 
 import bloomingblooms.response.CommonResponse;
-import com.bit.lotte.flower.user.common.valueobject.StoreId;
 import com.bit.lotte.flower.user.common.valueobject.UserId;
+import com.bit.lotte.flower.user.store.dto.command.StoreManagerSignUpCommand;
 import com.bit.lotte.flower.user.store.dto.command.UpdateBusinessNumberCommand;
 import com.bit.lotte.flower.user.store.dto.response.StoreManagerLoginResponse;
-import com.bit.lotte.flower.user.store.dto.command.StoreManagerSignUpCommand;
 import com.bit.lotte.flower.user.store.http.message.InitStoreManagerAuthorizationPublisher;
 import com.bit.lotte.flower.user.store.mapper.StoreManagerMapper;
 import com.bit.lotte.flower.user.store.service.StoreManagerLoginResponseService;
 import com.bit.lotte.flower.user.store.service.StoreManagerService;
 import com.bit.lotte.flower.user.store.service.StoreManagerSignUpService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,20 +40,20 @@ public class StoreUserRestController {
 
 
   @GetMapping("/stores/{storeMangerId}")
-  public ResponseEntity<StoreManagerLoginResponse> login(
+  public CommonResponse<StoreManagerLoginResponse> login(
       @PathVariable Long storeMangerId) {
-    return ResponseEntity.ok(
+    return CommonResponse.success(
         storeManagerLoginResponseService.getStoreManagerResponse(storeMangerId));
   }
 
 
   @PatchMapping("/stores")
-  public ResponseEntity<String> reRegisterBusinessNumber(
+  public CommonResponse<String> reRegisterBusinessNumber(
       @RequestBody UpdateBusinessNumberCommand command) {
     UserId storeId = storeManagerService.updateBusinessNumber(command.getEmail(),
         command.getBusinessNumberImage());
     publisher.publish(storeId);
-    return ResponseEntity.ok("초기화 요청 완료");
+    return CommonResponse.success("초기화 요청 완료");
   }
 
 
