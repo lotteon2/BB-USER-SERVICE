@@ -30,15 +30,8 @@ public class SocialUserRestController {
   private final GetUserLikesCntRequest getUserLikesCntRequest;
   private final GetUserCouponCntRequest getUserCouponCntRequest;
   private final GetUserInfoServiceImpl getUserInfoServiceImpl;
-  private final SocialUserLoginManager socialUserLoginManager;
   private final SocialUpdateUserService socialUserService;
 
-  @PostMapping("/social")
-  public ResponseEntity<UserLoginDataResponse> userLogin(
-      @RequestBody UserLoginCommand userLoginCommand) {
-    UserLoginDataResponse response = socialUserLoginManager.process(userLoginCommand);
-    return ResponseEntity.ok(response);
-  }
 
   @PutMapping("/social/phone-number")
   public CommonResponse<String> userPhoneNumberUpdate(
@@ -61,7 +54,6 @@ public class SocialUserRestController {
     socialUserService.updateUserInfo(userId, command.getNickname(), command.getEmail(),
         command.getPhoneNumber());
     return CommonResponse.success("업데이트 성공");
-
   }
 
   private UserMypageResponse<UserDataDto> getUserMypageResponse(UserDataDto userDataDto, Long likesCnt,
