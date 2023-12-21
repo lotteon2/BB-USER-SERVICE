@@ -44,7 +44,7 @@ public class SocialUserRestController {
     Long oauthIdToUserId = mapAuthIdToUserIdService.convert(new AuthId(userId)).getValue();
     UserDataDto userDataDto = getUserInfoServiceImpl.getUserdata(oauthIdToUserId);
     Long userLikesCnt = getUserLikesCntRequest.request(oauthIdToUserId);
-    Long userCouponCnt = getUserCouponCntRequest.request(oauthIdToUserId);
+    Integer userCouponCnt = getUserCouponCntRequest.request(oauthIdToUserId);
     return CommonResponse.success(getUserMypageResponse(userDataDto, userLikesCnt, userCouponCnt));
   }
 
@@ -58,7 +58,7 @@ public class SocialUserRestController {
   }
 
   private UserMypageResponse<UserDataDto> getUserMypageResponse(UserDataDto userDataDto, Long likesCnt,
-      Long couponCnt) {
+      Integer couponCnt) {
     return UserMypageResponse.builder().data(userDataDto).couponCnt(couponCnt)
         .likesCnt(likesCnt).build();
   }

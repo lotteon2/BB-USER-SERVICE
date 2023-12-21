@@ -19,6 +19,8 @@ public class UserLoginCommand {
   @NotNull
   private String nickname;
   @NotNull
+  private String phoneNumber;
+  @NotNull
   private String email;
 
 

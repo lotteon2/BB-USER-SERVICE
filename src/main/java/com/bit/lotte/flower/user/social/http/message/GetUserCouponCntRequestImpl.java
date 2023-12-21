@@ -11,7 +11,7 @@ public class GetUserCouponCntRequestImpl implements
 
   private final UserUsableCouponCntFeignRequest feignRequest;
   @Override
-  public Long request(Long userId) {
-    return feignRequest.getUsableUserCouponCnt(userId).getBody();
+  public Integer request(Long userId) {
+    return feignRequest.getUsableUserCouponCnt(userId).getData();
   }
 }

@@ -4,6 +4,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface GetUserCouponCntRequest {
-  public Long request(Long userId);
+  public Integer request(Long userId);
 
 }

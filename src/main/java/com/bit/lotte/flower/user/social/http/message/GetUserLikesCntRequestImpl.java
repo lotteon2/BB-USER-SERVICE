@@ -12,6 +12,6 @@ public class GetUserLikesCntRequestImpl implements
   private final UserLikesFeignRequest userLikesFeignRequest;
   @Override
   public Long request(Long userId) {
-    return userLikesFeignRequest.getUserLikesCnt(userId).getBody();
+    return userLikesFeignRequest.getUserLikesCnt(userId).getData();
   }
 }
