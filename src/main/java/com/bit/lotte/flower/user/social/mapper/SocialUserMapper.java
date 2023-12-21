@@ -27,7 +27,7 @@ public class SocialUserMapper {
   public static SocialUser createSocialUserByLoginCommand(UserLoginCommand userCreateCommand) {
     return SocialUser.builder().isDeleted(false).nickname(userCreateCommand.getNickname()).email(
             userCreateCommand.getEmail())
-        .phoneNumber(userCreateCommand.getPhoneNumber()).profileImage(DefaultProfileImagerURL.PROFILE_DEFAULT_IMAGE_URL).oauthId(
+        .phoneNumber(userCreateCommand.getPhoneNumber()).profileImage(null).oauthId(
             userCreateCommand.getSocialId().getValue()).build();
   }
 
