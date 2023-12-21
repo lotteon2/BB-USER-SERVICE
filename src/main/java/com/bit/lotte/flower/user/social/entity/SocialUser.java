@@ -20,6 +20,7 @@ import lombok.NoArgsConstructor;
 public class SocialUser extends BaseEntity{
 
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private Long oauthId;
   private String email;

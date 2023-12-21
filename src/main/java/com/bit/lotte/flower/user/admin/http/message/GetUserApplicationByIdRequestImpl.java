@@ -16,6 +16,6 @@ public class GetUserApplicationByIdRequestImpl implements
 
   @Override
   public List<Long> request(StoreManagerStatus storeManagerStatus) {
-    return feignRequest.getStoreManagerApplications(storeManagerStatus);
+    return feignRequest.getStoreManagerApplications(storeManagerStatus).getData();
   }
 }
