@@ -31,13 +31,6 @@ public class SocialUserRestController {
   private final SocialUpdateUserService socialUserService;
 
 
-  @PutMapping("/social/phone-number")
-  public CommonResponse<String> userPhoneNumberUpdate(
-      @RequestBody UserPhoneNumberDto phoneNumberDto, @RequestHeader Long userId) {
-    Long oauthIdToUserId = mapAuthIdToUserIdService.convert(new AuthId(userId)).getValue();
-    socialUserService.updatePhoneNumber(oauthIdToUserId, phoneNumberDto.getPhoneNumber());
-    return CommonResponse.success("성공");
-  }
 
   @GetMapping("/social")
   public CommonResponse<UserMypageResponse<UserDataDto>> getUserData(@RequestHeader Long userId) {
