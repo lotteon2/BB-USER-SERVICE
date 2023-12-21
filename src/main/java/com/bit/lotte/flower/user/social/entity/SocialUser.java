@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 
 @Builder
@@ -25,6 +26,7 @@ public class SocialUser extends BaseEntity{
   private Long oauthId;
   private String email;
   private String nickname;
+  @ColumnDefault(value = "https://ibb.co/BN1YNzw")
   private String profileImage;
   private String phoneNumber;
   private Boolean isDeleted;
