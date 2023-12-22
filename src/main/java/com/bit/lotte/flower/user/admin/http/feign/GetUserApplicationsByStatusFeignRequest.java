@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(name = "get-store-manager-applications", url = "${service.auth.domain}")
 public interface GetUserApplicationsByStatusFeignRequest {
-  @GetMapping("/store-manager/{status}")
+  @GetMapping("/client/store-manager/{status}")
   public CommonResponse<List<Long>> getStoreManagerApplications(@PathVariable StoreManagerStatus status);
 }
 

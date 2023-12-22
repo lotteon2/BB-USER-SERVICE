@@ -1,6 +1,5 @@
 package com.bit.lotte.flower.user.store.http.message;
 
-import com.bit.lotte.flower.user.common.valueobject.BaseId;
 import com.bit.lotte.flower.user.common.valueobject.UserId;
 import org.springframework.stereotype.Component;
 
