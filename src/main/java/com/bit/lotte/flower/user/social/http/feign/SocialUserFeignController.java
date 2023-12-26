@@ -5,6 +5,7 @@ import com.bit.lotte.flower.user.common.valueobject.AuthId;
 import com.bit.lotte.flower.user.common.valueobject.UserId;
 import com.bit.lotte.flower.user.social.dto.command.UserLoginCommand;
 import com.bit.lotte.flower.user.social.dto.response.UserLoginDataResponse;
+import com.bit.lotte.flower.user.social.service.GetUserInfoService;
 import com.bit.lotte.flower.user.social.service.MapAuthIdToUserIdService;
 import com.bit.lotte.flower.user.social.service.SocialUserLoginManager;
 import com.bit.lotte.flower.user.social.service.SoftDeleteStrategyService;
@@ -17,10 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
-public class UserFeignController {
+public class SocialUserFeignController {
 
   private final MapAuthIdToUserIdService<AuthId> mapAuthIdToUserIdService;
   private final SoftDeleteStrategyService softDeleteStrategyService;
+  private final GetUserInfoService getUserInfoService;
   private final SocialUserLoginManager socialUserLoginManager;
 
 
@@ -31,6 +33,11 @@ public class UserFeignController {
     return CommonResponse.success(response);
   }
 
+
+  @PutMapping("/client/users/{userId}/phone-number")
+  CommonResponse<String> getUserPhoneNumber(@PathVariable Long userId) {
+    return CommonResponse.success(getUserInfoService.getUserdata(userId).getPhoneNumber());
+  }
 
   @PutMapping("/client/users/{userId}")
   CommonResponse<Boolean> delete(@PathVariable Long userId) {

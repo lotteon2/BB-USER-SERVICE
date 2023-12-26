@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class UpdateStoreManagerPendingStausDto {
+public class UpdateStoreManagerPendingStatusDto {
 
   @NotNull
   private final String status = "ROLE_STORE_MANAGER_PENDING";
