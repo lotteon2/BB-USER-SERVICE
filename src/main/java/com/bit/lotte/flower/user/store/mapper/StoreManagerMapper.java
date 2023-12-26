@@ -11,7 +11,7 @@ public class StoreManagerMapper {
         signUpCommand.getEmail()).id(signUpCommand.getId()).name(signUpCommand.getName()).build();
   }
 
-  public static StoreManager storeManagerUpdatedPhoneNumber(StoreManager storeManager,
+  public static StoreManager storeManagerUpdatedBusinessNumber(StoreManager storeManager,
       String businessNumberImage) {
     return StoreManager.builder().email(storeManager.getEmail())
         .businessNumberImage(businessNumberImage).id(storeManager.getId())
