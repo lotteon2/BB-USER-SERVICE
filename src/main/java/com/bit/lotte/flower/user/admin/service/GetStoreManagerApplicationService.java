@@ -39,7 +39,7 @@ public class GetStoreManagerApplicationService {
       applicationDataList.add(
           StoreManagerApplicationData.builder().key(storeManager.getId())
               .storeManagerName(storeManager.getName())
-              .requestDate(storeManager.getCreatedAt())
+              .requestDate(storeManager.getUpdatedAt())
               .storeManagerBusinessNumber(storeManager.getBusinessNumberImage()).build());
     }
     return applicationDataList;
