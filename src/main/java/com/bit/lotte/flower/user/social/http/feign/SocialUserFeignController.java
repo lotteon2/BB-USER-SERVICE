@@ -10,6 +10,7 @@ import com.bit.lotte.flower.user.social.service.MapAuthIdToUserIdService;
 import com.bit.lotte.flower.user.social.service.SocialUserLoginManager;
 import com.bit.lotte.flower.user.social.service.SoftDeleteStrategyService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -34,7 +35,7 @@ public class SocialUserFeignController {
   }
 
 
-  @PutMapping("/client/users/{userId}/phone-number")
+  @GetMapping("/client/users/{userId}/phone-number")
   CommonResponse<String> getUserPhoneNumber(@PathVariable Long userId) {
     return CommonResponse.success(getUserInfoService.getUserdata(userId).getPhoneNumber());
   }
