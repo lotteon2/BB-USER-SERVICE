@@ -34,7 +34,7 @@ public class SocialUserFeignController {
   }
 
 
-  @PutMapping("/client/users/{userId}/phone-number")
+  @GetMapping("/client/users/{userId}/phone-number")
   CommonResponse<String> getUserPhoneNumber(@PathVariable Long userId) {
     return CommonResponse.success(getUserInfoService.getUserdata(userId).getPhoneNumber());
   }
