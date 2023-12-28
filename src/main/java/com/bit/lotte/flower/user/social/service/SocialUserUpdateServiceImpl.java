@@ -17,14 +17,6 @@ public class SocialUserUpdateServiceImpl implements
   private final FindSocialUserByLongIdService findUserByIdService;
   private final SocialUserJpaRepository repository;
 
-
-  @Override
-  public void updatePhoneNumber(Long userId, String phoneNumber) {
-    SocialUser socialUser = findUserByIdService.findUserElseThrowError(userId);
-    repository.save(
-        SocialUserMapper.updatedUserPhoneNumber(socialUser, phoneNumber));
-  }
-
   @Override
   public void updateUserInfo(Long userId, String nickname, String email, String phoneNumber) {
     SocialUser socialUser = findUserByIdService.findUserElseThrowError(userId);
