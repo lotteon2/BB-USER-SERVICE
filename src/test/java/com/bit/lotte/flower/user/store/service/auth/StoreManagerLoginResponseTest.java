@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
+import com.bit.lotte.flower.user.common.valueobject.AuthId;
 import com.bit.lotte.flower.user.store.dto.response.StoreManagerLoginResponse;
 import com.bit.lotte.flower.user.store.entity.StoreManager;
 import com.bit.lotte.flower.user.store.exception.StoreUserDomainException;
@@ -29,7 +30,7 @@ class StoreManagerLoginResponseTest {
   @Mock
   FindStoreMangerService findStoreMangerByLongIdService;
   @InjectMocks
-  StoreManagerLoginResponseService loginResponseService;
+  StoreManagerLoginResponseService<AuthId> loginResponseService;
 
   private final Long validStoreManagerId = 1L;
 
@@ -45,7 +46,7 @@ class StoreManagerLoginResponseTest {
     when(findStoreMangerByLongIdService.findByLongId(validStoreManagerId)).thenReturn(initUser());
 
     StoreManagerLoginResponse response = loginResponseService.getStoreManagerResponse(
-        validStoreManagerId);
+       new AuthId( validStoreManagerId));
     assertNotNull(response.getName());
   }
 
@@ -55,7 +56,7 @@ class StoreManagerLoginResponseTest {
 
 when(findStoreMangerByLongIdService.findByLongId(validStoreManagerId)).thenThrow(StoreUserDomainException.class);
     assertThrows(StoreUserDomainException.class, () -> {
-      loginResponseService.getStoreManagerResponse(validStoreManagerId);
+      loginResponseService.getStoreManagerResponse(new AuthId(validStoreManagerId));
     });
 
   }

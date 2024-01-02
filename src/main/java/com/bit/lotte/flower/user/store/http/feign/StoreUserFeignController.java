@@ -1,6 +1,7 @@
 package com.bit.lotte.flower.user.store.http.feign;
 
 import bloomingblooms.response.CommonResponse;
+import com.bit.lotte.flower.user.common.valueobject.AuthId;
 import com.bit.lotte.flower.user.store.dto.command.StoreManagerSignUpCommand;
 import com.bit.lotte.flower.user.store.dto.response.StoreManagerLoginResponse;
 import com.bit.lotte.flower.user.store.mapper.StoreManagerMapper;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class StoreUserFeignController {
 
 
-  private final StoreManagerLoginResponseService storeManagerLoginResponseService;
+  private final StoreManagerLoginResponseService<AuthId> storeManagerLoginResponseService;
   private final StoreManagerSignUpService storeManagerCreateService;
 
   /**
@@ -37,7 +38,7 @@ public class StoreUserFeignController {
 
   @GetMapping("/client/stores/{storeMangerId}")
   public CommonResponse<StoreManagerLoginResponse> login(
-      @PathVariable Long storeMangerId) {
+      @PathVariable AuthId storeMangerId) {
     return CommonResponse.success(
         storeManagerLoginResponseService.getStoreManagerResponse(storeMangerId));
   }
