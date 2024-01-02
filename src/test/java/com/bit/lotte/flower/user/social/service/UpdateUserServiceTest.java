@@ -1,11 +1,7 @@
 package com.bit.lotte.flower.user.social.service;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertThrowsExactly;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -14,13 +10,10 @@ import com.bit.lotte.flower.user.social.entity.SocialUser;
 import com.bit.lotte.flower.user.social.exception.SocialUserDomainException;
 import com.bit.lotte.flower.user.social.repository.FindSocialUserByLongIdService;
 import com.bit.lotte.flower.user.social.repository.SocialUserJpaRepository;
-import java.util.Optional;
-import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 

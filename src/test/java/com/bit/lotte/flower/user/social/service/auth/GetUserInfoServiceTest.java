@@ -6,6 +6,7 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import com.bit.lotte.flower.user.common.valueobject.UserId;
 import com.bit.lotte.flower.user.social.entity.SocialUser;
 import com.bit.lotte.flower.user.social.exception.SocialUserDomainException;
 import com.bit.lotte.flower.user.social.repository.FindSocialUserByLongIdService;
@@ -35,7 +36,7 @@ class GetUserInfoServiceTest {
     when(findSocialUserByLongIdService.findUserElseThrowError(anyLong())).thenReturn(mockUser);
 
     assertDoesNotThrow(()->{
-      getUserInfoService.getUserdata(mockUser.getId());
+      getUserInfoService.getUserdata(new UserId(mockUser.getId()));
     });
 
   }
@@ -48,7 +49,7 @@ class GetUserInfoServiceTest {
         .thenThrow(SocialUserDomainException.class);
 
     assertThrowsExactly(SocialUserDomainException.class, () -> {
-      getUserInfoService.getUserdata(anyLong());
+      getUserInfoService.getUserdata(new UserId(anyLong()));
     });
   }
 }
