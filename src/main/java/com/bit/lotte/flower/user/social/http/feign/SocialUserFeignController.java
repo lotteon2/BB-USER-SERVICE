@@ -20,10 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 public class SocialUserFeignController {
-
   private final MapAuthIdToUserIdService<AuthId> mapAuthIdToUserIdService;
   private final SoftDeleteStrategyService softDeleteStrategyService;
-  private final GetUserInfoService getUserInfoService;
+  private final GetUserInfoService<UserId> getUserInfoService;
   private final SocialUserLoginManager socialUserLoginManager;
 
 
@@ -37,12 +36,13 @@ public class SocialUserFeignController {
 
   @GetMapping("/client/users/{userId}/phone-number")
   CommonResponse<String> getUserPhoneNumber(@PathVariable Long userId) {
-    return CommonResponse.success(getUserInfoService.getUserdata(userId).getPhoneNumber());
+    return CommonResponse.success(
+        getUserInfoService.getUserdata(new UserId(userId)).getPhoneNumber());
   }
 
   @PutMapping("/client/users/{userId}")
-  CommonResponse<Boolean> delete(@PathVariable Long userId) {
-    UserId convertedUserId = mapAuthIdToUserIdService.convert(new AuthId(userId));
+  CommonResponse<Boolean> delete(@PathVariable AuthId userId) {
+    UserId convertedUserId = mapAuthIdToUserIdService.convert(userId);
     softDeleteStrategyService.userWithdrawal(convertedUserId);
     return CommonResponse.success(Boolean.TRUE);
   }

@@ -44,13 +44,6 @@ public class SocialUserMapper {
         .phoneNumber(socialUser.getPhoneNumber()).build();
   }
 
-  public static SocialUser updatedUserPhoneNumber(SocialUser socialUser, String phoneNumber) {
-    return SocialUser.builder().email(socialUser.getEmail()).isDeleted(socialUser.getIsDeleted())
-        .nickname(
-            socialUser.getNickname())
-        .phoneNumber(phoneNumber).profileImage(socialUser.getProfileImage())
-        .oauthId(socialUser.getOauthId()).id(socialUser.getId()).build();
-  }
 
 
   public static SocialUser updateUserInfo(SocialUser socialUser, String nickname, String email,
