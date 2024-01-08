@@ -1,11 +1,8 @@
 package com.bit.lotte.flower.user.store.http.controller;
 
 import bloomingblooms.response.CommonResponse;
-import com.bit.lotte.flower.user.common.valueobject.UserId;
 import com.bit.lotte.flower.user.store.dto.command.UpdateBusinessNumberCommand;
 import com.bit.lotte.flower.user.store.handler.StoreManagerStatusInitHandler;
-import com.bit.lotte.flower.user.store.http.message.InitStoreManagerAuthorizationPublisher;
-import com.bit.lotte.flower.user.store.service.StoreManagerService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PatchMapping;
