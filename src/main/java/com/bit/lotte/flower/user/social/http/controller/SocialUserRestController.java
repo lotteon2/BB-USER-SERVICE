@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class SocialUserRestController {
 
   private final MapAuthIdToUserIdService<AuthId> mapAuthIdToUserIdService;
-  private final GetUserLikesCntRequest<UserId> getUserLikesCntRequest;
-  private final GetUserCouponCntRequest<UserId> getUserCouponCntRequest;
+  private final GetUserLikesCntRequest<AuthId> getUserLikesCntRequest;
+  private final GetUserCouponCntRequest<AuthId> getUserCouponCntRequest;
   private final GetUserInfoService<UserId> getUserInfoService;
   private final SocialUpdateUserService socialUserService;
 
@@ -36,8 +36,8 @@ public class SocialUserRestController {
   public CommonResponse<UserMypageResponse<UserDataDto>> getUserData(@RequestHeader AuthId userId) {
     UserId oauthIdToUserId = mapAuthIdToUserIdService.convert(userId);
     UserDataDto userDataDto = getUserInfoService.getUserdata(oauthIdToUserId);
-    Long userLikesCnt = getUserLikesCntRequest.request(oauthIdToUserId);
-    Integer userCouponCnt = getUserCouponCntRequest.request(oauthIdToUserId);
+    Long userLikesCnt = getUserLikesCntRequest.request(userId);
+    Integer userCouponCnt = getUserCouponCntRequest.request(userId);
     return CommonResponse.success(getUserMypageResponse(userDataDto, userLikesCnt, userCouponCnt));
   }
 
