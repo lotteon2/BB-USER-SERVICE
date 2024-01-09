@@ -9,14 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 @NoArgsConstructor
-public class UserMypageResponse {
-
-  private String nickname;
-  private String phoneNumber;
-  private String email;
-  private String profileImage;
+public class UserMypageResponse<T extends UserDataDto> {
   Integer couponCnt;
   Long likesCnt;
-
+  T data;
 
 }
