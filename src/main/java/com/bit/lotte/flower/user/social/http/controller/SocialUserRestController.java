@@ -33,7 +33,7 @@ public class SocialUserRestController {
 
 
   @GetMapping("/social")
-  public CommonResponse<UserMypageResponse<UserDataDto>> getUserData(@RequestHeader AuthId userId) {
+  public CommonResponse<UserMypageResponse> getUserData(@RequestHeader AuthId userId) {
     UserId oauthIdToUserId = mapAuthIdToUserIdService.convert(userId);
     UserDataDto userDataDto = getUserInfoService.getUserdata(oauthIdToUserId);
     Long userLikesCnt = getUserLikesCntRequest.request(oauthIdToUserId);
@@ -58,10 +58,13 @@ public class SocialUserRestController {
     return CommonResponse.success(getUserInfoService.getUserdata(oauthIdToUserId).getPhoneNumber());
   }
 
-  private UserMypageResponse<UserDataDto> getUserMypageResponse(UserDataDto userDataDto,
+  private UserMypageResponse getUserMypageResponse(UserDataDto userDataDto,
       Long likesCnt,
       Integer couponCnt) {
-    return UserMypageResponse.builder().data(userDataDto).couponCnt(couponCnt)
+    return UserMypageResponse.builder().email(userDataDto.getEmail())
+        .nickname(userDataDto.getNickname()).phoneNumber(
+            userDataDto.getPhoneNumber()).profileImage(userDataDto.getProfileImage())
+        .couponCnt(couponCnt)
         .likesCnt(likesCnt).build();
   }
 
