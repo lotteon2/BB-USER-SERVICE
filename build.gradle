@@ -51,8 +51,7 @@ dependencies {
     implementation 'software.amazon.awssdk:sns:2.21.37'
 
     //common maven
-    implementation 'io.github.lotteon-maven:blooming-blooms-utils:202312270619'
-
+implementation 'io.github.lotteon-maven:blooming-blooms-utils:202401091420'
 }
 
 dependencyManagement {
