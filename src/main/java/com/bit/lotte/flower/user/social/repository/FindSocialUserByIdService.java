@@ -8,15 +8,21 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class FindSocialUserByLongIdService {
+public class FindSocialUserByIdService {
 
   private final SocialUserJpaRepository repository;
 
-  public SocialUser findUserElseThrowError(Long id) {
-    return repository.findById(id).orElseThrow(() -> {
+  public SocialUser findUserByUserIdElseThrowError(Long userId) {
+    return repository.findById(userId).orElseThrow(() -> {
       throw new SocialUserDomainException("존재하지 않는 회원입니다.");
     });
 
+  }
+
+  public SocialUser findUserByOauthIdElseThrowAnError(Long oauthId) {
+    return repository.findByOauthId(oauthId).orElseThrow(() -> {
+      throw new SocialUserDomainException("존재하지 않는 회원입니다.");
+    });
 
 
   }

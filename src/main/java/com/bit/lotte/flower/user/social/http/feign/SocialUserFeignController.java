@@ -9,7 +9,8 @@ import com.bit.lotte.flower.user.social.service.GetUserInfoService;
 import com.bit.lotte.flower.user.social.service.MapAuthIdToUserIdService;
 import com.bit.lotte.flower.user.social.service.SocialUserLoginManager;
 import com.bit.lotte.flower.user.social.service.SoftDeleteStrategyService;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,14 +18,26 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequiredArgsConstructor
 @RestController
 public class SocialUserFeignController {
+
   private final MapAuthIdToUserIdService<AuthId> mapAuthIdToUserIdService;
   private final SoftDeleteStrategyService softDeleteStrategyService;
-  private final GetUserInfoService<UserId> getUserInfoService;
+  private final GetUserInfoService<AuthId> getUserInfoService;
   private final SocialUserLoginManager socialUserLoginManager;
 
+
+  @Autowired
+  public SocialUserFeignController(
+      MapAuthIdToUserIdService<AuthId> mapAuthIdToUserIdService,
+      SoftDeleteStrategyService softDeleteStrategyService,
+      @Qualifier("GetUserInfoByOauthId") GetUserInfoService<AuthId> getUserInfoService,
+      SocialUserLoginManager socialUserLoginManager) {
+    this.mapAuthIdToUserIdService = mapAuthIdToUserIdService;
+    this.softDeleteStrategyService = softDeleteStrategyService;
+    this.getUserInfoService = getUserInfoService;
+    this.socialUserLoginManager = socialUserLoginManager;
+  }
 
   @PostMapping("/client/social")
   public CommonResponse<UserLoginDataResponse> userLogin(
@@ -37,7 +50,7 @@ public class SocialUserFeignController {
   @GetMapping("/client/users/{userId}/phone-number")
   CommonResponse<String> getUserPhoneNumber(@PathVariable Long userId) {
     return CommonResponse.success(
-        getUserInfoService.getUserdata(new UserId(userId)).getPhoneNumber());
+        getUserInfoService.getUserdata(new AuthId(userId)).getPhoneNumber());
   }
 
   @PutMapping("/client/users/{userId}")

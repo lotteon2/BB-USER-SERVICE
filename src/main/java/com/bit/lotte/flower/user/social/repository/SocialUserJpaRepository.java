@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface SocialUserJpaRepository extends JpaRepository<SocialUser, Long> {
 
   Optional<SocialUser> findByOauthIdAndIsDeletedFalse(Long oauthId);
-
   List<SocialUser> findAllByOauthId(Long oauthId);
+  Optional<SocialUser> findByOauthId(Long oauthId);
 }

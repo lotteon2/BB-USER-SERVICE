@@ -7,7 +7,7 @@ import static org.mockito.Mockito.mock;
 
 import com.bit.lotte.flower.user.social.entity.SocialUser;
 import com.bit.lotte.flower.user.social.exception.SocialUserDomainException;
-import com.bit.lotte.flower.user.social.repository.FindSocialUserByLongIdService;
+import com.bit.lotte.flower.user.social.repository.FindSocialUserByIdService;
 import com.bit.lotte.flower.user.social.repository.SocialUserJpaRepository;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
@@ -18,20 +18,20 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-public class FindSocialUserByLongIdServiceTest {
+public class FindSocialUserByIdServiceTest {
 
 
   @Mock
   SocialUserJpaRepository repository;
   @InjectMocks
-  FindSocialUserByLongIdService findSocialUserByLongIdService;
+  FindSocialUserByIdService findSocialUserByIdService;
 
   @Test
   void FindUser_WhenUserIsExist_GetUser() {
     SocialUser mockUser = mock(SocialUser.class);
     Mockito.when(repository.findById(anyLong())).thenReturn(Optional.of(mockUser));
 
-    SocialUser result = findSocialUserByLongIdService.findUserElseThrowError(1L);
+    SocialUser result = findSocialUserByIdService.findUserByUserIdElseThrowError(1L);
 
     assertNotNull(result);
   }
@@ -41,7 +41,7 @@ public class FindSocialUserByLongIdServiceTest {
     Mockito.when(repository.findById(anyLong())).thenThrow(SocialUserDomainException.class);
 
         assertThrowsExactly(SocialUserDomainException.class, () -> {
-          findSocialUserByLongIdService.findUserElseThrowError(1L);
+          findSocialUserByIdService.findUserByUserIdElseThrowError(1L);
         });
   }
 
