@@ -13,6 +13,7 @@ public class FindStoreMangerService {
 
   private final StoreManagerJpaRepository repository;
 
+
   public StoreManager findByLongId(Long id) {
     return repository.findById(id).orElseThrow(() -> {
       throw new StoreUserDomainException("존재하지 않는 스토어 매니저입니다.");
