@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 public class StoreManagerApplicationData {
   private Long key;
   private String storeManagerName;
+  private String businessNumber;
   private String storeManagerBusinessNumber;
   private LocalDateTime requestDate;
 }

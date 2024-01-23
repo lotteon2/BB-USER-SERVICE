@@ -5,6 +5,10 @@ import com.bit.lotte.flower.user.store.entity.StoreManager;
 
 public class StoreManagerMapper {
 
+  private StoreManagerMapper(){
+
+
+  }
 
   public static StoreManager createCommandToStoreManager(StoreManagerSignUpCommand signUpCommand) {
     return StoreManager.builder().businessNumberImage(signUpCommand.getBusinessNumberImage()).email(
