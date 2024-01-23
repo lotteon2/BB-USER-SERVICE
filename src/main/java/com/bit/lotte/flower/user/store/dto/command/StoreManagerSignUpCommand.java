@@ -13,5 +13,6 @@ public class StoreManagerSignUpCommand {
   private Long id;
   private String email;
   private String businessNumberImage;
+  private String businessNumber;
   private String name;
 }

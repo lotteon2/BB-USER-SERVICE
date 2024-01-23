@@ -8,7 +8,9 @@ public class StoreManagerMapper {
 
   public static StoreManager createCommandToStoreManager(StoreManagerSignUpCommand signUpCommand) {
     return StoreManager.builder().businessNumberImage(signUpCommand.getBusinessNumberImage()).email(
-        signUpCommand.getEmail()).id(signUpCommand.getId()).name(signUpCommand.getName()).build();
+            signUpCommand.getEmail()).businessNumber(signUpCommand.getBusinessNumber())
+        .id(signUpCommand.getId()).name(signUpCommand.getName()).build();
+
   }
 
   public static StoreManager storeManagerUpdatedBusinessNumber(StoreManager storeManager,
