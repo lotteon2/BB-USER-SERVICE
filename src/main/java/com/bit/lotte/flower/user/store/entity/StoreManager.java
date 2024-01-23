@@ -20,6 +20,7 @@ public class StoreManager  extends BaseEntity {
   private Long id;
   private String name;
   private String email;
+  private String businessNumber;
   private String businessNumberImage;
 
 }

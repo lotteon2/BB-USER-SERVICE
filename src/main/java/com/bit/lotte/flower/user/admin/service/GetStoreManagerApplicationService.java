@@ -55,6 +55,7 @@ public class GetStoreManagerApplicationService {
           StoreManagerApplicationData.builder().key(storeManager.getId())
               .storeManagerName(storeManager.getName())
               .requestDate(storeManager.getUpdatedAt())
+              .storeManagerBusinessNumber(storeManager.getBusinessNumber())
               .storeManagerBusinessNumber(storeManager.getBusinessNumberImage()).build());
     }
     return applicationDataList;
